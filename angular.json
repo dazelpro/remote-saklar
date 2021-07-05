@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "remote-saklar"
+    }
+  },
+  "defaultProject": "remote-saklar",
+  "cli": {
+    "analytics": "ece1550a-629f-4f66-80ec-87c9f97941e8"
+  }
 }
