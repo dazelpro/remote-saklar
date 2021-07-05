@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageLoginComponent } from './page-login/page-login.component';
 import { AuthRoutingModule } from './auth-routing.module';
+import { MaterialModule } from 'src/app/material.module';
 
 
 
@@ -9,7 +10,8 @@ import { AuthRoutingModule } from './auth-routing.module';
     declarations: [PageLoginComponent],
     imports: [
         CommonModule,
-        AuthRoutingModule
+        AuthRoutingModule,
+        MaterialModule
     ]
 })
 export class AuthModule { }
