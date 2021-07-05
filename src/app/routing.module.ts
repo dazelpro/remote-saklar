@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { AnonymousService } from './cores/anonymous.service';
+import { AuthService } from './cores/auth.service';
 
 const routes: Routes = [
     {
         path: 'login',
         loadChildren: './modules/auth/auth.module#AuthModule',
-        // canActivate: [AnonymousService]
+        canActivate: [AnonymousService]
     },
     {
         path: 'dashboard',
         loadChildren: './modules/dashboard/dashboard.module#DashboardModule',
-        // canActivate: [AuthService]
+        canActivate: [AuthService]
     },
     { path: '**', redirectTo: 'login' }
 ];

@@ -1,1 +1,13 @@
-<p>page-login works!</p>
+<div class="container">
+    <div class="content">
+        <div *ngIf="!loggedIn">
+            <button (click)="signInWithGoogle()" class="btn-login">Sign In with Google</button>
+        </div>
+        <div *ngIf="loggedIn" class="card-user">
+            <img src="{{ user.photoUrl }}">
+            <h2>{{ user.name }}</h2>
+            <p>{{ user.email }}</p>
+            <button (click)="signOut()" class="btn-logout">Log Out</button>
+        </div>
+    </div>
+</div>
