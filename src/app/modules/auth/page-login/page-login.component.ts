@@ -54,12 +54,6 @@ export class PageLoginComponent implements OnInit {
     }
 
     async login() {
-        // this.loading = true;
-        // localStorage.setItem('token', 'asdasdsad');
-        // localStorage.setItem('auth', JSON.stringify(this.dataUsrLcl));
-        // this.zone.run(() => {
-        //     this.router.navigate(['/dashboard']);
-        // });
         this.loading = true;
         try {
             await this.rest.auth_user(this.dataUserAuth).subscribe(async (data) => {
