@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharesModule } from './shares/shares.module';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
         RoutingModule,
         AuthModule,
         DashboardModule,
+        SharesModule,
         SocialLoginModule,
         BrowserAnimationsModule,
         HttpClientModule

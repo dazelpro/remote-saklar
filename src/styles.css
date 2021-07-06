@@ -18,5 +18,5 @@ button, input, text-area  {
 
 .limit-area {
     max-width: 750px;
-    min-width: 540px;
+    /* min-width: 540px; */
 }
