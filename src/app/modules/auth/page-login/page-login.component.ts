@@ -56,7 +56,7 @@ export class PageLoginComponent implements OnInit {
     async login() {
         this.loading = true;
         try {
-            await this.rest.auth_user(this.dataUserAuth).subscribe(async (data) => {
+            await this.rest.authUser(this.dataUserAuth).subscribe(async (data) => {
                 if (data["success"]) {
                     localStorage.setItem('token', data['token']);
                     localStorage.setItem('auth',JSON.stringify(this.dataUsrLcl));
