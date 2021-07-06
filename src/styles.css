@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* html, body { height: 100%; } */
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif !important;
+    color: #053742;
+}
+
+button, input, text-area  {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-primary {
+    background-color: #39A2DB !important;
+    color: #fff !important;
+}
+
+.limit-area {
+    max-width: 750px;
+    min-width: 540px;
+}

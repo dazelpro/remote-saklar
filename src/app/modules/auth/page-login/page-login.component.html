@@ -1,8 +1,8 @@
 <div class="row center-xs">
-    <div class="col-xs-6">
+    <div class="col-xs-12 limit-area">
         <div class="box">
             <div *ngIf="!loggedIn">
-                <button (click)="signInWithGoogle()" mat-button>Sign In with Google</button>
+                <button mat-button (click)="signInWithGoogle()" class="btn-primary">Sign In with Google</button>
             </div>
         </div>
     </div>
