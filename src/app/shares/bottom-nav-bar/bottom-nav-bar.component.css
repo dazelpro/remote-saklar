@@ -12,13 +12,13 @@
     box-sizing: border-box;
 }
 .bottom-tab-bar {
-    border-top: 1px solid #A2DBFA !important;
+    border-top: 1px solid #d3d3d3 !important;
 }
 .bottom-tab-bar {
     position: relative;
     box-sizing: border-box;
     height: 50px;
-    border-top: 1px solid #A2DBFA;
+    border-top: 1px solid #d3d3d3;
     width: 100%;
     display: flex;
     transition-duration: .2s;

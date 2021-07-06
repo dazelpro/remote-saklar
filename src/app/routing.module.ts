@@ -15,7 +15,12 @@ const routes: Routes = [
         loadChildren: './modules/dashboard/dashboard.module#DashboardModule',
         canActivate: [AuthService]
     },
-    { path: '**', redirectTo: 'login' }
+    {
+        path: 'device',
+        loadChildren: './modules/device/device.module#DeviceModule',
+        canActivate: [AuthService]
+    },
+    { path: '**', redirectTo: 'dashboard' }
 ];
 
 @NgModule({
