@@ -1,22 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* html, body { height: 100%; } */
+html,
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif !important;
-    color: #053742;
+  background-color: #E8F0F2;
 }
 
-button, input, text-area  {
-    font-family: 'Poppins', sans-serif !important;
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif !important;
+  color: #053742;
+}
+
+button,
+input,
+text-area {
+  font-family: "Poppins", sans-serif !important;
 }
 
 .btn-primary {
-    background-color: #39A2DB !important;
-    color: #fff !important;
+  background-color: #39a2db !important;
+  color: #fff !important;
 }
 
 .limit-area {
-    max-width: 750px;
-    min-width: 540px;
+  max-width: 750px;
+  /* min-width: 540px; */
 }
