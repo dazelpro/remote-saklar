@@ -12,6 +12,7 @@ import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharesModule } from './shares/shares.module';
 import { DeviceModule } from './modules/device/device.module';
+import { ProfileModule } from './modules/profile/profile.module';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { DeviceModule } from './modules/device/device.module';
         AuthModule,
         DashboardModule,
         DeviceModule,
+        ProfileModule,
         SharesModule,
         SocialLoginModule,
         BrowserAnimationsModule,

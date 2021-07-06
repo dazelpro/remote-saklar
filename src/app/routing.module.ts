@@ -20,6 +20,11 @@ const routes: Routes = [
         loadChildren: './modules/device/device.module#DeviceModule',
         canActivate: [AuthService]
     },
+    {
+        path: 'profile',
+        loadChildren: './modules/profile/profile.module#ProfileModule',
+        canActivate: [AuthService]
+    },
     { path: '**', redirectTo: 'dashboard' }
 ];
 
