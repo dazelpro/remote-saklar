@@ -7,6 +7,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';  //Tambahkan baris ini
 import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -14,10 +17,13 @@ import { environment } from 'src/environments/environment';
     ],
     imports: [
         BrowserModule,
+        MaterialModule,
         RoutingModule,
         AuthModule,
         DashboardModule,
-        SocialLoginModule
+        SocialLoginModule,
+        BrowserAnimationsModule,
+        HttpClientModule
     ],
     providers: [
         {

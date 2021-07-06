@@ -1,6 +1,8 @@
 import { Component, NgZone, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { ApiService } from 'src/app/cores/api.service';
 
 @Component({
     selector: 'app-page-login',
@@ -18,9 +20,11 @@ export class PageLoginComponent implements OnInit {
     loggedIn: boolean;
 
     constructor(
+        private rest: ApiService,
         private router: Router,
         private zone: NgZone,
         private authService: SocialAuthService,
+        private _snackBar: MatSnackBar,
     ) { }
 
     ngOnInit(): void {
@@ -50,12 +54,31 @@ export class PageLoginComponent implements OnInit {
     }
 
     async login() {
+        // this.loading = true;
+        // localStorage.setItem('token', 'asdasdsad');
+        // localStorage.setItem('auth', JSON.stringify(this.dataUsrLcl));
+        // this.zone.run(() => {
+        //     this.router.navigate(['/dashboard']);
+        // });
         this.loading = true;
-        localStorage.setItem('token', 'asdasdsad');
-        localStorage.setItem('auth', JSON.stringify(this.dataUsrLcl));
-        this.zone.run(() => {
-            this.router.navigate(['/dashboard']);
-        });
+        try {
+            await this.rest.auth_user(this.dataUserAuth).subscribe(async (data) => {
+                if (data["success"]) {
+                    localStorage.setItem('token', data['token']);
+                    localStorage.setItem('auth',JSON.stringify(this.dataUsrLcl));
+                    this.zone.run(() => {
+                        this.router.navigate(['/dashboard']);
+                    });
+                }
+            },(err)=>{
+                this.loading = false;
+                this._snackBar.open('Server sedang sibuk', '', {
+                    duration: 1000,
+                });
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 }
