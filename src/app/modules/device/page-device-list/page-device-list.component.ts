@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/cores/api.service';
+import { UserService } from 'src/app/cores/user.service';
 
 @Component({
     selector: 'app-page-device-list',
@@ -10,11 +11,14 @@ export class PageDeviceListComponent implements OnInit {
 
     constructor(
         private rest: ApiService,
-    ) { }
+        public dataUser: UserService
+    ) { 
+        dataUser.getProfile();
+    }
 
     async ngOnInit() {
         try {
-            await this.rest.getDevice('eerer').subscribe(async (data) => {
+            await this.rest.getDevice(this.dataUser.id).subscribe(async (data) => {
                 console.log(data)
             }, (err) => {
                 console.log(err);
