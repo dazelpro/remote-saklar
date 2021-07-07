@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/cores/api.service';
 import { UserService } from 'src/app/cores/user.service';
+import { DialogDeviceAddComponent } from '../dialog-device-add/dialog-device-add.component';
 
 @Component({
     selector: 'app-page-device-list',
@@ -11,7 +13,8 @@ export class PageDeviceListComponent implements OnInit {
 
     constructor(
         private rest: ApiService,
-        public dataUser: UserService
+        public dataUser: UserService,
+        public dialog: MatDialog,
     ) { 
         dataUser.getProfile();
     }
@@ -30,6 +33,13 @@ export class PageDeviceListComponent implements OnInit {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    dialogDeviceAdd() {
+        this.dialog.open(DialogDeviceAddComponent, {
+            width: '600px',
+            height: 'auto'
+        });
     }
 
 }

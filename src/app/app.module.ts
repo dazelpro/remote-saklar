@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharesModule } from './shares/shares.module';
 import { DeviceModule } from './modules/device/device.module';
 import { ProfileModule } from './modules/profile/profile.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { ProfileModule } from './modules/profile/profile.module';
         SharesModule,
         SocialLoginModule,
         BrowserAnimationsModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
     ],
     providers: [
         {
