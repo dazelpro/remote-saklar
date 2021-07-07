@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/cores/api.service';
 import { UserService } from 'src/app/cores/user.service';
 import { DialogDeviceAddComponent } from '../dialog-device-add/dialog-device-add.component';
@@ -11,10 +12,13 @@ import { DialogDeviceAddComponent } from '../dialog-device-add/dialog-device-add
 })
 export class PageDeviceListComponent implements OnInit {
 
+    myDevice: Object;
+
     constructor(
         private rest: ApiService,
         public dataUser: UserService,
         public dialog: MatDialog,
+        private _snackBar: MatSnackBar,
     ) { 
         dataUser.getProfile();
     }
@@ -22,13 +26,13 @@ export class PageDeviceListComponent implements OnInit {
     async ngOnInit() {
         try {
             await this.rest.getDevice(this.dataUser.id).subscribe(async (data) => {
-                console.log(data)
+                this.myDevice = data['data'];
             }, (err) => {
                 console.log(err);
                 // this.loading = false;
-                // this._snackBar.open('Server sedang sibuk', '', {
-                //     duration: 1000,
-                // });
+                this._snackBar.open('Server sedang sibuk', '', {
+                    duration: 1000,
+                });
             });
         } catch (error) {
             console.log(error);
@@ -47,6 +51,10 @@ export class PageDeviceListComponent implements OnInit {
                 }
             }
         });
+    }
+
+    detailDevice(arr) {
+        console.log(arr)
     }
 
 }

@@ -4,6 +4,9 @@
             <p>Halaman Device</p>
             <button mat-button class="btn-primary" (click)="dialogDeviceAdd()">+ Device</button>
         </div>
+        <div *ngFor="let item of this.myDevice">
+            <p (click)="detailDevice(item)" style="padding:  20px 0 0 0;">{{item.device_name}}</p>
+        </div>
     </div>
 </div>
 <app-bottom-nav-bar></app-bottom-nav-bar>
