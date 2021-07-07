@@ -41,6 +41,12 @@ export class DialogDeviceAddComponent implements OnInit {
                         duration: 1200,
                     });
                 }
+                if(err.error.message == 'Device not found') {
+                    this.dialogRef.close();
+                    this._snackBar.open('Serial number tidak ditemukan', '', {
+                        duration: 1200,
+                    });
+                }
             }); 
         } catch (error) {
             console.log(error);
