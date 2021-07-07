@@ -36,9 +36,16 @@ export class PageDeviceListComponent implements OnInit {
     }
 
     dialogDeviceAdd() {
-        this.dialog.open(DialogDeviceAddComponent, {
+        const dialogRef = this.dialog.open(DialogDeviceAddComponent, {
             width: '600px',
             height: 'auto'
+        });
+        dialogRef.afterClosed().subscribe(arr => {
+            if(arr) {
+                if (arr.success) {
+                    this.ngOnInit();
+                }
+            }
         });
     }
 

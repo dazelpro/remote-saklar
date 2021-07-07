@@ -23,6 +23,10 @@ export class ApiService {
     }
 
     getDevice(data) {
-        return this.http.get(`${this.linkUrl()}/iot/device?users=${data}`);
+        return this.http.get(`${this.linkUrl()}/iot/device?users=${data}`, { headers: this.getHeaders() });
+    }
+
+    addDevice(data) {
+        return this.http.post(`${this.linkUrl()}/iot/device`,data, { headers: this.getHeaders() });
     }
 }
