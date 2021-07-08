@@ -14,11 +14,19 @@ export class ApiService {
         return token ? new HttpHeaders().set('Authorization', token) : null;
     }
 
-    link_url() {
+    linkUrl() {
         return environment.urlApi;
     }
 
-    auth_user(data) {
-        return this.http.post(`${this.link_url()}/iot/auth`,data);
+    authUser(data) {
+        return this.http.post(`${this.linkUrl()}/iot/auth`,data);
+    }
+
+    getDevice(data) {
+        return this.http.get(`${this.linkUrl()}/iot/device?users=${data}`, { headers: this.getHeaders() });
+    }
+
+    addDevice(data) {
+        return this.http.post(`${this.linkUrl()}/iot/device`,data, { headers: this.getHeaders() });
     }
 }

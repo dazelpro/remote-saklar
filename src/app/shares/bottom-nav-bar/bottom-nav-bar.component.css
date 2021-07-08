@@ -5,6 +5,14 @@
     right: 0;
     left: 0;
 }
+@media only screen and (min-width: 10030px) {
+    .bottom-tab-wrap {
+        position: fixed;
+        z-index: 998;
+        width: 768px;
+        margin: auto;
+    }
+}
 .bottom-tab-wrap {
     flex-shrink: 0;
 }
