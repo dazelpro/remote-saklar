@@ -51,3 +51,7 @@
     overflow: hidden;
     
 }
+.card-device div svg  {
+    vertical-align: middle;
+    color: rgb(148, 148, 148);
+}
