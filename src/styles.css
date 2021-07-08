@@ -13,7 +13,8 @@ body {
 
 button,
 input,
-text-area {
+text-area,
+.mat-snackbar {
   font-family: "Poppins", sans-serif !important;
 }
 

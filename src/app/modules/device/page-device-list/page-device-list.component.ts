@@ -32,6 +32,7 @@ export class PageDeviceListComponent implements OnInit {
                 // this.loading = false;
                 this._snackBar.open('Server sedang sibuk', '', {
                     duration: 1000,
+                    panelClass: ['mat-snackbar', 'mat-primary']
                 });
             });
         } catch (error) {

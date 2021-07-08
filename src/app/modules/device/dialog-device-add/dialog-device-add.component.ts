@@ -39,12 +39,14 @@ export class DialogDeviceAddComponent implements OnInit {
                     this.dialogRef.close();
                     this._snackBar.open('Device sudah terdaftar', '', {
                         duration: 1200,
+                        panelClass: ['mat-snackbar', 'mat-primary']
                     });
                 }
                 if(err.error.message == 'Device not found') {
                     this.dialogRef.close();
                     this._snackBar.open('Serial number tidak ditemukan', '', {
                         duration: 1200,
+                        panelClass: ['mat-snackbar', 'mat-primary']
                     });
                 }
             }); 
