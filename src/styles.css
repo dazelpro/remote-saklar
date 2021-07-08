@@ -26,7 +26,46 @@ text-area,
 
 .limit-area {
   max-width: 750px;
-  /* min-width: 540px; */
+}
+
+.header-page {
+  display: table;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.header-page > * {
+  display: table-row;
+}
+
+.header-page .col {
+  display: table-cell;
+}
+
+.header-page .back {
+  text-align: left;
+  width: 50px;
+  color: black;
+}
+
+.header-page .back svg {
+  vertical-align: middle;
+}
+
+.header-page .other svg {
+  vertical-align: middle;
+}
+
+.header-page .other {
+  text-align: right;
+  width: 50px;
+  color: black;
+}
+
+.header-page .title {
+  text-align: center;
+  vertical-align: middle;
 }
 
 .dummy {
