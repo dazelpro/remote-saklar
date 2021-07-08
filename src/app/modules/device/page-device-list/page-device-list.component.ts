@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/cores/api.service';
 import { UserService } from 'src/app/cores/user.service';
 import { DialogDeviceAddComponent } from '../dialog-device-add/dialog-device-add.component';
@@ -19,6 +20,7 @@ export class PageDeviceListComponent implements OnInit {
         public dataUser: UserService,
         public dialog: MatDialog,
         private _snackBar: MatSnackBar,
+        private router: Router,
     ) { 
         dataUser.getProfile();
     }
@@ -55,7 +57,9 @@ export class PageDeviceListComponent implements OnInit {
     }
 
     detailDevice(arr) {
-        console.log(arr)
+        console.log(arr);
+        let deviceSN = arr.device_serial_number.toLowerCase();
+        this.router.navigateByUrl('/device/' + deviceSN);
     }
 
 }

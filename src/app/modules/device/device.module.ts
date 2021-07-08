@@ -6,9 +6,11 @@ import { MaterialModule } from 'src/app/material.module';
 import { SharesModule } from 'src/app/shares/shares.module';
 import { DialogDeviceAddComponent } from './dialog-device-add/dialog-device-add.component';
 import { FormsModule } from '@angular/forms';
+import { PageDeviceDetailParentComponent } from './page-device-detail-parent/page-device-detail-parent.component';
+import { PageDeviceDetailChildComponent } from './page-device-detail-child/page-device-detail-child.component';
 
 @NgModule({
-    declarations: [PageDeviceListComponent, DialogDeviceAddComponent],
+    declarations: [PageDeviceListComponent, DialogDeviceAddComponent, PageDeviceDetailParentComponent, PageDeviceDetailChildComponent],
     imports: [
         CommonModule,
         DeviceRoutingModule,
