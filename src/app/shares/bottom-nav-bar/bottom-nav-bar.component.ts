@@ -24,7 +24,6 @@ export class BottomNavBarComponent implements OnInit {
         } else if (this.isUrl.match(/profile.*/)) {
             this.isPage = 'Profile'
         }
-        console.log(this.isPage)
     }
 
 }
