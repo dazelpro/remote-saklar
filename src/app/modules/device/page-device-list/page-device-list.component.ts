@@ -57,7 +57,6 @@ export class PageDeviceListComponent implements OnInit {
     }
 
     detailDevice(arr) {
-        console.log(arr);
         let deviceSN = arr.device_serial_number.toLowerCase();
         this.router.navigateByUrl('/device/' + deviceSN);
     }
