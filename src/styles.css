@@ -49,11 +49,11 @@ text-area,
   color: black;
 }
 
-.header-page .back svg {
+.header-page .back div svg {
   vertical-align: middle;
 }
 
-.header-page .other svg {
+.header-page .other div svg {
   vertical-align: middle;
 }
 
@@ -66,6 +66,27 @@ text-area,
 .header-page .title {
   text-align: center;
   vertical-align: middle;
+}
+
+.icon-button-edit {
+  background: transparent;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  padding: 5px;
+  margin-left: auto;
+}
+
+.icon-button-back {
+  background: transparent;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  padding: 5px;
+}
+
+.icon-button-edit > svg, .icon-button-back > svg {
+  margin-top: -3px;
 }
 
 .dummy {
