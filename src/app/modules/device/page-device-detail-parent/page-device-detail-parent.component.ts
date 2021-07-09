@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/cores/api.service';
 
 @Component({
     selector: 'app-page-device-detail-parent',
@@ -8,18 +10,39 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PageDeviceDetailParentComponent implements OnInit {
 
-    id
+    id;
+    titlePage;
     
     constructor(
+        private rest: ApiService,
         private activatedRoute: ActivatedRoute,
+        private _location: Location,
     ) { 
         if (activatedRoute.snapshot.url[0]){
             this.id = activatedRoute.snapshot.url[0]["path"];
         }
     }
 
-    ngOnInit(): void {
-        console.log(this.id)
+    async ngOnInit() {
+        this.id = this.id.toUpperCase()
+        try {
+            await this.rest.getDeviceById(this.id).subscribe(async (data) => {
+                console.log(data);
+            }, (err) => {
+                console.log(err);
+                // this.loading = false;
+                // this._snackBar.open('Server sedang sibuk', '', {
+                //     duration: 1000,
+                //     panelClass: ['mat-snackbar', 'mat-primary']
+                // });
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    back() {
+        this._location.back();
     }
 
 }

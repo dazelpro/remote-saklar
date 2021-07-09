@@ -14,6 +14,9 @@ import { SharesModule } from './shares/shares.module';
 import { DeviceModule } from './modules/device/device.module';
 import { ProfileModule } from './modules/profile/profile.module';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
 
 @NgModule({
     declarations: [
@@ -31,7 +34,9 @@ import { FormsModule } from '@angular/forms';
         SocialLoginModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireDatabaseModule
     ],
     providers: [
         {
