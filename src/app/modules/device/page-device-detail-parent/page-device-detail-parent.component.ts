@@ -14,6 +14,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
 
     idDevice;
     titlePage;
+    mySwitch: Object;
     
     constructor(
         private rest: ApiService,
@@ -62,7 +63,8 @@ export class PageDeviceDetailParentComponent implements OnInit {
         this.idDevice = this.idDevice.toUpperCase()
         try {
             await this.rest.getDeviceByIdFB(this.idDevice).subscribe(async (data) => {
-                console.log(data);
+                this.mySwitch = data;
+                console.log(data)
             }, (err) => {
                 console.log(err);
                 this._snackBar.open('Server sedang sibuk', '', {

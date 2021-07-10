@@ -46,7 +46,7 @@ text-area,
 .header-page .back {
   text-align: left;
   width: 50px;
-  color: black;
+  color: #053742;
 }
 
 .header-page .back div svg {
@@ -60,12 +60,13 @@ text-area,
 .header-page .other {
   text-align: right;
   width: 50px;
-  color: black;
+  color: #053742;
 }
 
 .header-page .title {
   text-align: center;
   vertical-align: middle;
+  color: #053742;
 }
 
 .icon-button-edit {

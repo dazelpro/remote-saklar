@@ -19,7 +19,19 @@
                 </div>
             </div>
         </section>
-
+        <div class="device mt20">
+            <div *ngFor="let item of this.mySwitch">
+                <div class="card-device">
+                    <div>{{item.NAME}}</div>
+                    <div class="next">
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>            
+        </div>
     </div>
 </div>
 <app-bottom-nav-bar></app-bottom-nav-bar>
