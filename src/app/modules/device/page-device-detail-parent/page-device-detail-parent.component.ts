@@ -1,9 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/cores/api.service';
 import { UserService } from 'src/app/cores/user.service';
+import { DialogRenameDeviceComponent } from './dialog-rename-device/dialog-rename-device.component';
 
 @Component({
     selector: 'app-page-device-detail-parent',
@@ -23,6 +25,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
         public dataUser: UserService,
         private _snackBar: MatSnackBar,
         private router: Router,
+        public dialog: MatDialog,
     ) { 
         if (activatedRoute.snapshot.url[0]){
             this.idDevice = activatedRoute.snapshot.url[0]["path"];
@@ -77,7 +80,19 @@ export class PageDeviceDetailParentComponent implements OnInit {
         }
     }
 
-    
+    openDialogRenameDevice() {
+        const dialogRef = this.dialog.open(DialogRenameDeviceComponent, {
+            width: '600px',
+            height: 'auto'
+        });
+        dialogRef.afterClosed().subscribe(arr => {
+            if(arr) {
+                if (arr.success) {
+                    this.ngOnInit();
+                }
+            }
+        });
+    }
 
     back() {
         this._location.back();
