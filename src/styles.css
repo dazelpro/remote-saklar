@@ -90,6 +90,18 @@ text-area,
   margin-top: -3px;
 }
 
+.btn-primary {
+  background-color: #39A2DB;
+  border: none;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.mat-dialog-container {
+  border-radius: 5px !important;
+  padding: 15px !important;
+}
+
 .dummy {
   box-sizing: border-box;
   display: inline-block;

@@ -51,4 +51,8 @@ export class ApiService {
     addDevice(data) {
         return this.http.post(`${this.linkUrl()}/iot/device`,data, { headers: this.getHeaders() });
     }
+
+    renameDevice(data) {
+        return this.http.put(`${this.linkUrl()}/iot/rename-device`,data, { headers: this.getHeaders() });
+    }
 }

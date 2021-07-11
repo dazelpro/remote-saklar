@@ -16,6 +16,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
 
     idDevice;
     titlePage;
+    dataDevice;
     mySwitch: Object;
     
     constructor(
@@ -49,6 +50,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
                     });
                 } else {
                     this.titlePage = data['device'][0]['device_name'];
+                    this.dataDevice = data['device'][0];
                 }
             }, (err) => {
                 console.log('err');
@@ -83,7 +85,8 @@ export class PageDeviceDetailParentComponent implements OnInit {
     openDialogRenameDevice() {
         const dialogRef = this.dialog.open(DialogRenameDeviceComponent, {
             width: '600px',
-            height: 'auto'
+            height: 'auto',
+            data: this.dataDevice
         });
         dialogRef.afterClosed().subscribe(arr => {
             if(arr) {
