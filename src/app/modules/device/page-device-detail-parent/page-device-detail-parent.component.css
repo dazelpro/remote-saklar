@@ -1,19 +1,31 @@
 .device {
   background: #fff;
+  margin: 0 0 10px 0;
   border-radius: 5px;
 }
 .card-device {
   align-items: center;
+  text-align: left;
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-top: 1px solid #ededed;
   position: relative;
   overflow: hidden;
 }
 .card-device div svg {
   vertical-align: middle;
   color: rgb(148, 148, 148);
+}
+.card-device .title-switch {
+  padding: 5px;
+  width: 80%;
+  color: #39A2DB;
+  font-weight: 400;
+}
+.card-device .icon-electric {
+  background-color: #ededed;
+  border-radius: 10px;
+  padding: 7px;
 }
 
 .switch {

@@ -19,10 +19,13 @@
                 </div>
             </div>
         </section>
-        <div class="device mt20">
+        <div class="mt20">
             <div *ngFor="let item of this.mySwitch">
-                <div class="card-device">
-                    <div>{{item.NAME}}</div>
+                <div class="device card-device">
+                    <div class="icon-electric">
+                        <svg fill="#39A2DB" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M8 24l3-9h-9l14-15-3 9h9l-14 15z"/></svg>
+                    </div>
+                    <div class="title-switch">{{item.NAME}}</div>
                     <div class="next">
                         <label class="switch">
                             <input type="checkbox" checked>
