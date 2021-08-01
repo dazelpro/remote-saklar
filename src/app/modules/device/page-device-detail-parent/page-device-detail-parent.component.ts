@@ -97,6 +97,17 @@ export class PageDeviceDetailParentComponent implements OnInit {
         });
     }
 
+    checkboxAction(arr,items) {
+        let status = arr.currentTarget.checked;
+        if (status == true) {
+            console.log('Hidupkan!');
+            this.rest.onDevice(items);
+        } else {
+            console.log('Matikan!');
+            this.rest.offDevice(items);
+        }
+    }
+
     back() {
         this._location.back();
     }
