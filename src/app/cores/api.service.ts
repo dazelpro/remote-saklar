@@ -49,7 +49,6 @@ export class ApiService {
     }
 
     onDevice(data) {
-        console.log(data.key)
         this.itemsRef.update(data['key'], { REQ: 1 });
     }
 

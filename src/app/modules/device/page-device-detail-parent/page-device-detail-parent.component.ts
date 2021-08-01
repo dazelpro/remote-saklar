@@ -18,6 +18,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
     titlePage;
     dataDevice;
     mySwitch: Object;
+    loading = true;
     
     constructor(
         private rest: ApiService,
@@ -69,7 +70,8 @@ export class PageDeviceDetailParentComponent implements OnInit {
         try {
             await this.rest.getDeviceByIdFB(this.idDevice).subscribe(async (data) => {
                 this.mySwitch = data;
-                console.log(data)
+                this.loading = false;
+                // console.log(data)
             }, (err) => {
                 console.log(err);
                 this._snackBar.open('Server sedang sibuk', '', {
@@ -98,12 +100,13 @@ export class PageDeviceDetailParentComponent implements OnInit {
     }
 
     checkboxAction(arr,items) {
+        this.loading = true;
         let status = arr.currentTarget.checked;
         if (status == true) {
-            console.log('Hidupkan!');
+            // console.log('Hidupkan!');
             this.rest.onDevice(items);
         } else {
-            console.log('Matikan!');
+            // console.log('Matikan!');
             this.rest.offDevice(items);
         }
     }
