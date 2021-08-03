@@ -48,7 +48,19 @@ export class ApiService {
         );
     }
 
+    onDevice(data) {
+        this.itemsRef.update(data['key'], { REQ: 1 });
+    }
+
+    offDevice(data) {
+        this.itemsRef.update(data['key'], { REQ: 0 });
+    }
+
     addDevice(data) {
         return this.http.post(`${this.linkUrl()}/iot/device`,data, { headers: this.getHeaders() });
+    }
+
+    renameDevice(data) {
+        return this.http.put(`${this.linkUrl()}/iot/rename-device`,data, { headers: this.getHeaders() });
     }
 }

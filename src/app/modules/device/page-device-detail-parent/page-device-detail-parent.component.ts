@@ -1,9 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/cores/api.service';
 import { UserService } from 'src/app/cores/user.service';
+import { DialogRenameDeviceComponent } from './dialog-rename-device/dialog-rename-device.component';
 
 @Component({
     selector: 'app-page-device-detail-parent',
@@ -14,6 +16,9 @@ export class PageDeviceDetailParentComponent implements OnInit {
 
     idDevice;
     titlePage;
+    dataDevice;
+    mySwitch: Object;
+    loading = true;
     
     constructor(
         private rest: ApiService,
@@ -22,6 +27,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
         public dataUser: UserService,
         private _snackBar: MatSnackBar,
         private router: Router,
+        public dialog: MatDialog,
     ) { 
         if (activatedRoute.snapshot.url[0]){
             this.idDevice = activatedRoute.snapshot.url[0]["path"];
@@ -45,6 +51,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
                     });
                 } else {
                     this.titlePage = data['device'][0]['device_name'];
+                    this.dataDevice = data['device'][0];
                 }
             }, (err) => {
                 console.log('err');
@@ -62,7 +69,9 @@ export class PageDeviceDetailParentComponent implements OnInit {
         this.idDevice = this.idDevice.toUpperCase()
         try {
             await this.rest.getDeviceByIdFB(this.idDevice).subscribe(async (data) => {
-                console.log(data);
+                this.mySwitch = data;
+                this.loading = false;
+                // console.log(data)
             }, (err) => {
                 console.log(err);
                 this._snackBar.open('Server sedang sibuk', '', {
@@ -75,7 +84,38 @@ export class PageDeviceDetailParentComponent implements OnInit {
         }
     }
 
-    
+    openDialogRenameDevice() {
+        const dialogRef = this.dialog.open(DialogRenameDeviceComponent, {
+            width: '600px',
+            height: 'auto',
+            data: this.dataDevice
+        });
+        dialogRef.afterClosed().subscribe(arr => {
+            if(arr) {
+                if (arr.success) {
+                    this.ngOnInit();
+                }
+            }
+        });
+    }
+
+    checkboxAction(arr,items) {
+        this.loading = true;
+        let status = arr.currentTarget.checked;
+        if (status == true) {
+            // console.log('Hidupkan!');
+            this.rest.onDevice(items);
+        } else {
+            // console.log('Matikan!');
+            this.rest.offDevice(items);
+        }
+    }
+
+    detail(arr) {
+        let deviceSN = this.idDevice.toLowerCase();
+        let switchKey = arr.key.toLowerCase();
+        this.router.navigateByUrl(`/device/${deviceSN}/${switchKey}`, { state: { arr } });
+    }
 
     back() {
         this._location.back();

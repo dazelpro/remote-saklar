@@ -8,9 +8,10 @@ import { DialogDeviceAddComponent } from './dialog-device-add/dialog-device-add.
 import { FormsModule } from '@angular/forms';
 import { PageDeviceDetailParentComponent } from './page-device-detail-parent/page-device-detail-parent.component';
 import { PageDeviceDetailChildComponent } from './page-device-detail-child/page-device-detail-child.component';
+import { DialogRenameDeviceComponent } from './page-device-detail-parent/dialog-rename-device/dialog-rename-device.component';
 
 @NgModule({
-    declarations: [PageDeviceListComponent, DialogDeviceAddComponent, PageDeviceDetailParentComponent, PageDeviceDetailChildComponent],
+    declarations: [PageDeviceListComponent, DialogDeviceAddComponent, PageDeviceDetailParentComponent, PageDeviceDetailChildComponent, DialogRenameDeviceComponent],
     imports: [
         CommonModule,
         DeviceRoutingModule,
