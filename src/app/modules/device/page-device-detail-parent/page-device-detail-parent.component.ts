@@ -111,6 +111,12 @@ export class PageDeviceDetailParentComponent implements OnInit {
         }
     }
 
+    detail(arr) {
+        let deviceSN = this.idDevice.toLowerCase();
+        let switchKey = arr.key.toLowerCase();
+        this.router.navigateByUrl(`/device/${deviceSN}/${switchKey}`, { state: { arr } });
+    }
+
     back() {
         this._location.back();
     }
