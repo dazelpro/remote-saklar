@@ -1,3 +1,4 @@
+<app-loading-animated *ngIf="this.loading"></app-loading-animated>
 <div class="row center-xs">
     <div class="col-xs-12 limit-area">
         <section class="header-page mt15">
@@ -19,20 +20,22 @@
                 </div>
             </div>
         </section>
-        <div class="device mt20">
-            <div *ngFor="let item of this.myDevice">
-                <div class="card-device" matRipple (click)="detailDevice(item)">
-                    <div>{{item.device_name}}</div>
-                    <div class="next">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
+        <section class="screen-scroll">
+            <div class="device mt20">
+                <div *ngFor="let item of this.myDevice">
+                    <div class="card-device" matRipple (click)="detailDevice(item)">
+                        <div>{{item.device_name}}</div>
+                        <div class="next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
                     </div>
-                </div>
-            </div>            
-        </div>
-        <br>
-        <button (click)="dialogDeviceAdd()">+</button>
+                </div>            
+            </div>
+            <br>
+            <button (click)="dialogDeviceAdd()">+</button>
+        </section>
     </div>
 </div>
 <app-bottom-nav-bar></app-bottom-nav-bar>
