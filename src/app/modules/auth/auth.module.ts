@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PageLoginComponent } from './page-login/page-login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { MaterialModule } from 'src/app/material.module';
+import { SharesModule } from 'src/app/shares/shares.module';
 
 
 
@@ -11,7 +12,8 @@ import { MaterialModule } from 'src/app/material.module';
     imports: [
         CommonModule,
         AuthRoutingModule,
-        MaterialModule
+        MaterialModule,
+        SharesModule
     ]
 })
 export class AuthModule { }
