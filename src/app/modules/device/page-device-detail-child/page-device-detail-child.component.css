@@ -1,0 +1,87 @@
+.table-layout {
+  width: 100%;
+  border: 1px;
+}
+
+.table-layout > tr > .left {
+  padding-left: 10px;
+}
+
+.table-layout > tr > .left > .title {
+    font-size: 20px;
+    margin: 0;
+    color: #39a2db;
+}
+
+.table-layout > tr > .left > .connect {
+  color: #289672;
+  font-size: 10px;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 21px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #a7a7a7;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #39a2db;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #39a2db;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
