@@ -19,7 +19,7 @@
                 <tr>
                     <td class="left">
                         <div class="title" (click)="openDialogRenameChild()">{{this.name}}</div>
-                        <div class="connect" *ngIf="this.status == 1">Connected</div>
+                        <div class="connect" *ngIf="this.status == 1">Online</div>
                         <div class="reconnect" *ngIf="this.status == 2">Reconnect...</div>
                         <div class="notconnect" *ngIf="this.status == 3">Not connected</div>
                     </td>

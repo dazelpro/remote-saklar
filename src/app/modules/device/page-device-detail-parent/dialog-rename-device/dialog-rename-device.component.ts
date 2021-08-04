@@ -22,7 +22,6 @@ export class DialogRenameDeviceComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        console.log(this.dataDevice)
         this.deviceName = this.dataDevice['device_name'];
     }
 

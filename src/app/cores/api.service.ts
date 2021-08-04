@@ -63,4 +63,8 @@ export class ApiService {
     renameDevice(data) {
         return this.http.put(`${this.linkUrl()}/iot/rename-device`,data, { headers: this.getHeaders() });
     }
+
+    renameSwitch(key,newName) {
+        this.itemsRef.update(key, { NAME: newName });
+    }
 }

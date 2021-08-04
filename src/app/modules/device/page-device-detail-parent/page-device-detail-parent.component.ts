@@ -71,7 +71,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
             await this.rest.getDeviceByIdFB(this.idDevice).subscribe(async (data) => {
                 this.mySwitch = data;
                 this.loading = false;
-                console.log(data)
+                // console.log(data)
             }, (err) => {
                 console.log(err);
                 this._snackBar.open('Server sedang sibuk', '', {
@@ -86,7 +86,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
 
     openDialogRenameDevice() {
         const dialogRef = this.dialog.open(DialogRenameDeviceComponent, {
-            width: '600px',
+            width: '450px',
             height: 'auto',
             data: this.dataDevice
         });
