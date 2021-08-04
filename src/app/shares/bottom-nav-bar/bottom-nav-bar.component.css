@@ -21,6 +21,16 @@
 }
 .bottom-tab-bar {
     border-top: 1px solid #d3d3d3 !important;
+    background-color: white;
+    max-width: 750px;
+    margin: auto;
+}
+@media only screen and (min-width: 750px) {
+    .bottom-tab-bar {
+        border: 1px solid #d3d3d3 !important;
+        border-radius: 5px;
+        transform: translateY(-20px);
+    }
 }
 .bottom-tab-bar {
     position: relative;

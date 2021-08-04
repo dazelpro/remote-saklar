@@ -19,7 +19,7 @@
 .card-device .title-switch {
   padding: 5px 10px;
   width: 80%;
-  color: #39A2DB;
+  color: #39a2db;
   font-weight: 400;
 }
 .card-device .icon-electric {
@@ -48,7 +48,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #E8F0F2;
+  background-color: #e8f0f2;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -66,11 +66,11 @@
 }
 
 input:checked + .slider {
-  background-color: #39A2DB;
+  background-color: #39a2db;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #39A2DB;
+  box-shadow: 0 0 1px #39a2db;
 }
 
 input:checked + .slider:before {
@@ -86,4 +86,40 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.loading-ring {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 29px;
+}
+.loading-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: 8px;
+  border: 2px solid #39a2db;
+  border-radius: 50%;
+  animation: loading-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #39a2db transparent transparent transparent;
+}
+.loading-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes loading-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -130,3 +130,12 @@ text-area,
 .dummy.alt:after {
   content: attr(alt);
 }
+
+.screen-scroll {
+  height: 87vh;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+.screen-scroll::-webkit-scrollbar {
+  width: 0;
+}

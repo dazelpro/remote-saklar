@@ -1,0 +1,15 @@
+.form-fields {
+    background-color: #E8F0F2;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+.form-fields input {
+    background-color: #E8F0F2;
+    outline: none;
+    border: none;
+    width: 100%;
+}
+.btn-primary {
+    float: right;
+    margin-top: 15px;
+}
