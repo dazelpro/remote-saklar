@@ -14,7 +14,17 @@
 }
 
 .table-layout > tr > .left > .connect {
-  color: #289672;
+  color: #068827;
+  font-size: 10px;
+}
+
+.table-layout > tr > .left > .reconnect {
+  color: #adadad;
+  font-size: 10px;
+}
+
+.table-layout > tr > .left > .notconnect {
+  color: #eb1b1b;
   font-size: 10px;
 }
 

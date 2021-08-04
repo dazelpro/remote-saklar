@@ -49,12 +49,10 @@ export class ApiService {
     }
 
     onDevice(data) {
-        console.log(data)
         this.itemsRef.update(data['key'], { REQ: 1 });
     }
 
     offDevice(data) {
-        console.log(data)
         this.itemsRef.update(data['key'], { REQ: 0 });
     }
 

@@ -21,6 +21,7 @@ export class PageDeviceDetailChildComponent implements OnInit {
     name;
     req;
     res;
+    status;
 
     mySwitch;
     
@@ -52,10 +53,10 @@ export class PageDeviceDetailChildComponent implements OnInit {
                 this.name = this.mySwitch[0]['NAME'];
                 this.req = this.mySwitch[0]['REQ'];
                 this.res = this.mySwitch[0]['RES'];
+                this.checkStatusConnection();
                 this.loading = false;
                 // console.log(this.mySwitch[0])
             }, (err) => {
-                console.log(err);
                 this._snackBar.open('Server sedang sibuk', '', {
                     duration: 1000,
                     panelClass: ['mat-snackbar', 'mat-primary']
@@ -82,7 +83,6 @@ export class PageDeviceDetailChildComponent implements OnInit {
     }
 
     checkboxAction(arr) {
-        // this.loading = true;
         let status = arr.currentTarget.checked;
         if (status == true) {
             // console.log('Hidupkan!');
@@ -90,6 +90,23 @@ export class PageDeviceDetailChildComponent implements OnInit {
         } else {
             // console.log('Matikan!');
             this.rest.offDevice(this.mySwitch[0]);
+        }
+    }
+
+    checkStatusConnection() {
+        if (this.req === this.res) {
+            this.status = 1;
+        } else if (this.req !== this.res) {
+            this.status = 2
+            setTimeout(()=>{
+                this.setOffline()
+            }, 10000);
+        }
+    }
+
+    setOffline() {
+        if (this.req !== this.res) {
+            this.status = 3;
         }
     }
 
