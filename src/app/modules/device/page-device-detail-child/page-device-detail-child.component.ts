@@ -21,6 +21,8 @@ export class PageDeviceDetailChildComponent implements OnInit {
     name;
     req;
     res;
+
+    mySwitch;
     
     constructor(
         private rest: ApiService,
@@ -42,15 +44,16 @@ export class PageDeviceDetailChildComponent implements OnInit {
     }
 
     async getDeviceDetailByIdFB() {
-        this.idDevice = this.idDevice.toUpperCase();
-        this.idDeviceDetail = this.idDeviceDetail.toUpperCase();
+        this.idDevice = this.idDevice.toUpperCase()
+        this.idDeviceDetail = this.idDeviceDetail.toUpperCase()
         try {
-            await this.rest.getDeviceDetailByIdFB(this.idDevice, this.idDeviceDetail).subscribe(async (data) => {
-                this.dataChild = data;
-                this.name = data[0];
-                this.req = data[1];
-                this.res = data[2];
+            await this.rest.getDeviceByIdFB(this.idDevice).subscribe(async (data) => {
+                this.mySwitch = data.filter( element => element.key == this.idDeviceDetail);
+                this.name = this.mySwitch[0]['NAME'];
+                this.req = this.mySwitch[0]['REQ'];
+                this.res = this.mySwitch[0]['RES'];
                 this.loading = false;
+                // console.log(this.mySwitch[0])
             }, (err) => {
                 console.log(err);
                 this._snackBar.open('Server sedang sibuk', '', {
@@ -67,7 +70,7 @@ export class PageDeviceDetailChildComponent implements OnInit {
         const dialogRef = this.dialog.open(DialogRenameChildComponent, {
             width: '600px',
             height: 'auto',
-            data: this.dataChild
+            data: this.mySwitch[0]
         });
         dialogRef.afterClosed().subscribe(arr => {
             if(arr) {
@@ -76,6 +79,18 @@ export class PageDeviceDetailChildComponent implements OnInit {
                 }
             }
         });
+    }
+
+    checkboxAction(arr) {
+        // this.loading = true;
+        let status = arr.currentTarget.checked;
+        if (status == true) {
+            // console.log('Hidupkan!');
+            this.rest.onDevice(this.mySwitch[0]);
+        } else {
+            // console.log('Matikan!');
+            this.rest.offDevice(this.mySwitch[0]);
+        }
     }
 
     back() {

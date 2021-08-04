@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 export class ApiService {
 
     itemsRef: AngularFireList<any>;
-    itemsRefDetail: AngularFireList<any>;
     items: Observable<any[]>;
 
     constructor(
@@ -49,17 +48,13 @@ export class ApiService {
         );
     }
 
-    getDeviceDetailByIdFB(id,detail) {
-        this.itemsRefDetail = this.DB.list(`DEVICE/${id}/LIST/${detail}`);
-        // return this.itemsRefDetail.valueChanges();
-        return this.itemsRefDetail.valueChanges();
-    }
-
     onDevice(data) {
+        console.log(data)
         this.itemsRef.update(data['key'], { REQ: 1 });
     }
 
     offDevice(data) {
+        console.log(data)
         this.itemsRef.update(data['key'], { REQ: 0 });
     }
 
