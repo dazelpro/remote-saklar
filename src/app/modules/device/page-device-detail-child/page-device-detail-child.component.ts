@@ -55,7 +55,6 @@ export class PageDeviceDetailChildComponent implements OnInit {
                 this.res = this.mySwitch[0]['RES'];
                 this.checkStatusConnection();
                 this.loading = false;
-                // console.log(this.mySwitch[0])
             }, (err) => {
                 this._snackBar.open('Server sedang sibuk', '', {
                     duration: 1000,
@@ -69,15 +68,14 @@ export class PageDeviceDetailChildComponent implements OnInit {
 
     openDialogRenameChild() {
         const dialogRef = this.dialog.open(DialogRenameChildComponent, {
-            width: '600px',
+            width: '450px',
             height: 'auto',
             data: this.mySwitch[0]
         });
         dialogRef.afterClosed().subscribe(arr => {
             if(arr) {
-                if (arr.success) {
-                    this.ngOnInit();
-                }
+                this.loading = true;
+                this.ngOnInit();
             }
         });
     }

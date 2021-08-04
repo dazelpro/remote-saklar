@@ -16,6 +16,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
         HttpClientModule,
         FormsModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [
         {
