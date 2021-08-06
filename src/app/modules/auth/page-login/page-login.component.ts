@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { ApiService } from 'src/app/cores/api.service';
+import { UserService } from 'src/app/cores/user.service';
 
 @Component({
     selector: 'app-page-login',
@@ -25,7 +26,12 @@ export class PageLoginComponent implements OnInit {
         private zone: NgZone,
         private authService: SocialAuthService,
         private _snackBar: MatSnackBar,
-    ) { }
+        public data: UserService
+    ) { 
+        setTimeout(()=>{
+            this.data.loadingTrigger(false);
+        }, 500);
+    }
 
     ngOnInit(): void {
         this.authService.authState.subscribe((user) => {
@@ -54,7 +60,7 @@ export class PageLoginComponent implements OnInit {
     }
 
     async login() {
-        this.loading = true;
+        this.data.loadingTrigger(true);
         try {
             await this.rest.authUser(this.dataUserAuth).subscribe(async (data) => {
                 if (data["success"]) {
@@ -65,7 +71,7 @@ export class PageLoginComponent implements OnInit {
                     });
                 }
             },(err)=>{
-                this.loading = false;
+                this.data.loadingTrigger(false);
                 this._snackBar.open('Server sedang sibuk', '', {
                     duration: 1000,
                     panelClass: ['mat-snackbar', 'mat-primary']

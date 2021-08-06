@@ -8,13 +8,13 @@ import { UserService } from 'src/app/cores/user.service';
 export class PageProfileComponent implements OnInit {
 
     constructor(
-        public data : UserService
+        public dataUser : UserService
     ) { 
-        data.loadingTrigger(false);
+        this.dataUser.getProfile()
     }
 
     ngOnInit(): void {
-        // this.data.loadingTrigger(false);
+        console.log(this.dataUser.id)
     }
 
 }
