@@ -15,13 +15,11 @@ export class DialogRenameChildComponent implements OnInit {
     constructor(
         @Inject(MAT_DIALOG_DATA) public dataSwitch: any,
         private rest: ApiService,
-        // public dataUser: UserService,
         public dialogRef: MatDialogRef<DialogRenameChildComponent>,
         private _snackBar: MatSnackBar,
     ) { }
 
     ngOnInit(): void {
-        console.log(this.dataSwitch)
         this.childName = this.dataSwitch['NAME'];
     }
 
