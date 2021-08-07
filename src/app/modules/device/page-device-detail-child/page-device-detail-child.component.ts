@@ -14,7 +14,6 @@ import { DialogRenameChildComponent } from './dialog-rename-child/dialog-rename-
 })
 export class PageDeviceDetailChildComponent implements OnInit {
 
-    loading = true;
     dataChild;
     idDevice;
     idDeviceDetail;
@@ -54,7 +53,7 @@ export class PageDeviceDetailChildComponent implements OnInit {
                 this.req = this.mySwitch[0]['REQ'];
                 this.res = this.mySwitch[0]['RES'];
                 this.checkStatusConnection();
-                this.loading = false;
+                this.dataUser.loadingTrigger(false);
             }, (err) => {
                 this._snackBar.open('Server sedang sibuk', '', {
                     duration: 1000,
@@ -74,7 +73,7 @@ export class PageDeviceDetailChildComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(arr => {
             if(arr) {
-                this.loading = true;
+                this.dataUser.loadingTrigger(true);
                 this.ngOnInit();
             }
         });

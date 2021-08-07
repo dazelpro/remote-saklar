@@ -1,10 +1,11 @@
-<app-loading-animated *ngIf="this.loading"></app-loading-animated>
-<div class="row center-xs">
-    <div class="col-xs-12 limit-area">
-        <div class="box">
-            <div *ngIf="!loggedIn">
-                <button mat-button (click)="signInWithGoogle()" class="btn-primary">Sign In with Google</button>
+<div *ngIf="!loading" [@fadeInOnEnter] [@fadeOutOnLeave]>
+    <div class="content" matRipple (click)="signInWithGoogle()">
+        <div class="google-btn" #openDialogGoogle>
+            <div class="google-icon-wrapper">
+                <img class="google-icon"
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
             </div>
+            <p class="btn-text">Login with Google</p>
         </div>
     </div>
 </div>

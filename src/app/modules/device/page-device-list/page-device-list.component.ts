@@ -14,7 +14,6 @@ import { DialogDeviceAddComponent } from '../dialog-device-add/dialog-device-add
 export class PageDeviceListComponent implements OnInit {
 
     myDevice: Object;
-    loading = true;
 
     constructor(
         private rest: ApiService,
@@ -27,13 +26,14 @@ export class PageDeviceListComponent implements OnInit {
     }
 
     async ngOnInit() {
+        console.log(this.dataUser.spinner)
         try {
             await this.rest.getDevice(this.dataUser.id).subscribe(async (data) => {
                 this.myDevice = data['data'];
-                this.loading = false;
+                this.dataUser.loadingTrigger(false)
             }, (err) => {
                 console.log(err);
-                this.loading = false;
+                this.dataUser.loadingTrigger(false)
                 this._snackBar.open('Server sedang sibuk', '', {
                     duration: 1000,
                     panelClass: ['mat-snackbar', 'mat-primary']

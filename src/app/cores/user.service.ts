@@ -14,9 +14,15 @@ export class UserService {
     image;
     task;
 
+    spinner;
+
     constructor(
         private router: Router
-    ) { }
+    ) { 
+        router.events.subscribe((val) => {
+            this.spinner = true;
+        });
+    }
 
     async getProfile() {
         if (localStorage.getItem('token') !== null) {
@@ -40,6 +46,10 @@ export class UserService {
             localStorage.clear();
             this.router.navigate(['/login']);
         }
+    }
+
+    loadingTrigger(arr) {
+        this.spinner = arr;
     }
 
 }
