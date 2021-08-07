@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { ApiService } from 'src/app/cores/api.service';
 import { UserService } from 'src/app/cores/user.service';
@@ -8,17 +9,19 @@ import { UserService } from 'src/app/cores/user.service';
 @Component({
     selector: 'app-page-login',
     templateUrl: './page-login.component.html',
-    styleUrls: ['./page-login.component.css']
+    styleUrls: ['./page-login.component.css'],
+    animations: [
+        fadeInOnEnterAnimation(),
+        fadeOutOnLeaveAnimation()
+    ]
 })
 export class PageLoginComponent implements OnInit {
 
     dataUserAuth;
     dataUsrLcl: any = {};
-    link: string;
-    loading = false;
+    loading = true;
 
     user: SocialUser;
-    loggedIn: boolean;
 
     constructor(
         private rest: ApiService,
@@ -30,7 +33,8 @@ export class PageLoginComponent implements OnInit {
     ) { 
         setTimeout(()=>{
             this.data.loadingTrigger(false);
-        }, 500);
+            this.loading = false;
+        }, 1000);
     }
 
     ngOnInit(): void {
@@ -61,6 +65,7 @@ export class PageLoginComponent implements OnInit {
 
     async login() {
         this.data.loadingTrigger(true);
+        this.loading = true;
         try {
             await this.rest.authUser(this.dataUserAuth).subscribe(async (data) => {
                 if (data["success"]) {
@@ -72,6 +77,7 @@ export class PageLoginComponent implements OnInit {
                 }
             },(err)=>{
                 this.data.loadingTrigger(false);
+                this.loading = false;
                 this._snackBar.open('Server sedang sibuk', '', {
                     duration: 1000,
                     panelClass: ['mat-snackbar', 'mat-primary']
