@@ -26,7 +26,6 @@ export class PageDeviceListComponent implements OnInit {
     }
 
     async ngOnInit() {
-        console.log(this.dataUser.spinner)
         try {
             await this.rest.getDevice(this.dataUser.id).subscribe(async (data) => {
                 this.myDevice = data['data'];
