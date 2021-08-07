@@ -1,0 +1,33 @@
+.img-user {
+    border-radius: 50%;
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 10px;
+}
+
+.user-email {
+    font-size: 12px;
+}
+
+.device {
+    background: #fff;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.card-device {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #ededed;
+    position: relative;
+    overflow: hidden;
+    
+}
+.card-device div svg  {
+    vertical-align: middle;
+}

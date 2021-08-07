@@ -31,6 +31,10 @@ export class ApiService {
         return this.http.post(`${this.linkUrl()}/iot/auth`,data);
     }
 
+    myAccount(data) {
+        return this.http.post(`${this.linkUrl()}/iot/account`,data);
+    }
+
     getDevice(data) {
         return this.http.get(`${this.linkUrl()}/iot/devices?users=${data}`, { headers: this.getHeaders() });
     }
