@@ -37,6 +37,7 @@ export class PageDeviceDetailChildComponent implements OnInit {
             this.idDeviceDetail = activatedRoute.snapshot.url[1]["path"];
         }
         dataUser.getProfile();
+        dataUser.loadingTrigger(true);
     }
 
     ngOnInit(): void {
