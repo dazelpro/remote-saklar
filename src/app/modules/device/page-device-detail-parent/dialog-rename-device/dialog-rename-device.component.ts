@@ -32,7 +32,6 @@ export class DialogRenameDeviceComponent implements OnInit {
                 device_name: this.deviceName,
                 userId: this.dataUser.id
             }).subscribe((data)=>{
-                console.log(data)
                 this.dialogRef.close(data);
             },(err)=>{
                 if(err) {

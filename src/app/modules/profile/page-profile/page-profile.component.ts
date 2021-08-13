@@ -19,7 +19,8 @@ export class PageProfileComponent implements OnInit {
         private _snackBar: MatSnackBar,
         public data: UserService
     ) { 
-        this.dataUser.getProfile()
+        dataUser.getProfile()
+        data.loadingTrigger(true);
     }
 
     ngOnInit(): void {

@@ -23,6 +23,7 @@ export class PageDeviceListComponent implements OnInit {
         private router: Router,
     ) { 
         dataUser.getProfile();
+        dataUser.loadingTrigger(true);
     }
 
     async ngOnInit() {

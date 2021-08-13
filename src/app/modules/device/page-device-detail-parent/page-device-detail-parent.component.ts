@@ -32,6 +32,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
             this.idDevice = activatedRoute.snapshot.url[0]["path"];
         }
         dataUser.getProfile();
+        dataUser.loadingTrigger(true);
     }
 
     async ngOnInit() {
@@ -49,6 +50,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
                         panelClass: ['mat-snackbar', 'mat-primary']
                     });
                 } else {
+                    this.dataUser.loadingTrigger(false);
                     this.titlePage = data['device'][0]['device_name'];
                     this.dataDevice = data['device'][0];
                 }
@@ -69,7 +71,6 @@ export class PageDeviceDetailParentComponent implements OnInit {
         try {
             await this.rest.getDeviceByIdFB(this.idDevice).subscribe(async (data) => {
                 this.mySwitch = data;
-                this.dataUser.loadingTrigger(false);
             }, (err) => {
                 console.log(err);
                 this._snackBar.open('Server sedang sibuk', '', {
@@ -91,6 +92,7 @@ export class PageDeviceDetailParentComponent implements OnInit {
         dialogRef.afterClosed().subscribe(arr => {
             if(arr) {
                 if (arr.success) {
+                    this.dataUser.loadingTrigger(true);
                     this.ngOnInit();
                 }
             }

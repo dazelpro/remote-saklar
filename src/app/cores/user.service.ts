@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from "@angular/common";
 
 @Injectable({
     providedIn: 'root'
@@ -18,11 +19,7 @@ export class UserService {
 
     constructor(
         private router: Router
-    ) { 
-        router.events.subscribe((val) => {
-            this.spinner = true;
-        });
-    }
+    ) {}
 
     async getProfile() {
         if (localStorage.getItem('token') !== null) {
