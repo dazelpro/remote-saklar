@@ -26,7 +26,12 @@ export class PageDeviceListComponent implements OnInit {
         dataUser.loadingTrigger(true);
     }
 
+    async ngOnDestroy() {
+        // this.rest.changeDelay(5000);
+    }
+
     async ngOnInit() {
+        this.rest.changeDelay(1000);
         try {
             await this.rest.getDevice(this.dataUser.id).subscribe(async (data) => {
                 this.myDevice = data['data'];

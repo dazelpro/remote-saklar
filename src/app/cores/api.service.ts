@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 export class ApiService {
 
     itemsRef: AngularFireList<any>;
+    itemsDelay: AngularFireList<any>;
     items: Observable<any[]>;
 
     constructor(
@@ -70,5 +71,11 @@ export class ApiService {
 
     renameSwitch(key,newName) {
         this.itemsRef.update(key, { NAME: newName });
+    }
+
+    changeDelay(arr) {
+        this.itemsDelay = this.DB.list(`DEVICE/AMBER_02`);
+        this.itemsDelay.snapshotChanges()
+        this.itemsDelay.update('SETTING', { DELAY: arr });
     }
 }
