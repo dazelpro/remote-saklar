@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/cores/api.service';
 import { UserService } from 'src/app/cores/user.service';
+import { environment } from 'src/environments/environment';
 @Component({
     selector: 'app-page-profile',
     templateUrl: './page-profile.component.html',
@@ -12,7 +13,8 @@ export class PageProfileComponent implements OnInit {
     urlImage;
     userName;
     userEmail;
-
+    v = environment.versiApp;
+    
     constructor(
         public dataUser : UserService,
         private rest: ApiService,
