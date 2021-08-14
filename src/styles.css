@@ -26,6 +26,14 @@ text-area,
   background-color: #39a2db !important;
   color: #fff !important;
 }
+.btn-danger {
+  background-color: #db4439 !important;
+  color: #fff !important;
+}
+.btn-default {
+  background-color: transparent !important;
+  color: rgb(126, 125, 125) !important;
+}
 
 .limit-area {
   max-width: 750px;

@@ -1,0 +1,8 @@
+.dialog-content {
+  padding: 8px 10px;
+}
+.btn-danger,
+.btn-default {
+  float: right;
+  margin-top: 15px;
+}

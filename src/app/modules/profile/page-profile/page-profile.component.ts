@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/cores/api.service';
 import { UserService } from 'src/app/cores/user.service';
 import { environment } from 'src/environments/environment';
+import { DialogConfirmLogoutComponent } from '../dialog-confirm-logout/dialog-confirm-logout.component';
 @Component({
     selector: 'app-page-profile',
     templateUrl: './page-profile.component.html',
@@ -14,12 +16,13 @@ export class PageProfileComponent implements OnInit {
     userName;
     userEmail;
     v = environment.versiApp;
-    
+
     constructor(
         public dataUser : UserService,
         private rest: ApiService,
         private _snackBar: MatSnackBar,
-        public data: UserService
+        public data: UserService,
+        public dialog: MatDialog,
     ) { 
         dataUser.getProfile()
         data.loadingTrigger(true);
@@ -52,8 +55,16 @@ export class PageProfileComponent implements OnInit {
     }
 
     logout() {
-        localStorage.clear();
-        window.location.reload();
+        const dialogRef = this.dialog.open(DialogConfirmLogoutComponent, {
+            width: '450px',
+            height: 'auto',
+        });
+        dialogRef.afterClosed().subscribe(arr => {
+            if(arr) {
+                localStorage.clear();
+                window.location.reload();
+            }
+        });
     }
 
 }
