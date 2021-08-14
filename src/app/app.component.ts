@@ -11,8 +11,8 @@ import { UserService } from './cores/user.service';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     animations: [
-        fadeInOnEnterAnimation({duration:250}),
-        fadeOutOnLeaveAnimation({duration:250})
+        fadeInOnEnterAnimation({ duration: 250 }),
+        fadeOutOnLeaveAnimation({ duration: 250 })
     ]
 })
 export class AppComponent {
@@ -22,15 +22,18 @@ export class AppComponent {
 
     constructor(
         public data: UserService,
-        private swUpdate: SwUpdate,
+        private readonly updates: SwUpdate,
         private _snackBar: MatSnackBar,
         private connectionService: ConnectionService,
     ) {
-        this.swUpdate.available.subscribe(event => {
-            const snack = this._snackBar.open("Versi terbaru telah tersedia", "Update");
-            snack.onAction().subscribe(() => {
-                window.location.reload();
-            })
+        // this.swUpdate.available.subscribe(event => {
+        //     const snack = this._snackBar.open("Versi terbaru telah tersedia", "Update");
+        //     snack.onAction().subscribe(() => {
+        //         window.location.reload();
+        //     })
+        // });
+        this.updates.available.subscribe(event => {
+            this.showAppUpdateAlert();
         });
         this.connectionService.monitor().subscribe(isConnected => {
             this.isConnected = isConnected;
@@ -46,5 +49,15 @@ export class AppComponent {
 
         })
         console.log(environment.versiApp);
+    }
+
+    showAppUpdateAlert() {
+        const snack = this._snackBar.open("Versi terbaru telah tersedia", "Update", {
+            duration: 3000,
+            panelClass: ['mat-snackbar', 'mat-primary']
+        });
+        snack.onAction().subscribe(() => {
+            window.location.reload();
+        })
     }
 }
